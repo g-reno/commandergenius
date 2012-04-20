@@ -4,7 +4,11 @@ ifneq ($(strip $(filter mad, $(COMPILED_LIBRARIES))),)
 SDL_MIXER_USE_LIBMAD := 1
 endif
 
-NDK_VERSION := $(strip $(patsubst android-ndk-%,%,$(filter android-ndk-%, $(subst /, ,$(dir $(TARGET_CC))))))
+# GR: just in case we made NDK a symlink
+REALPATH_TARGET_CC="$(shell readlink -f $(dir $(TARGET_CC)))"
+
+NDK_VERSION := $(strip $(patsubst android-ndk-%,%,$(filter android-ndk-%, $(subst /, ,$(dir $(REALPATH_TARGET_CC))))))
+$(warning "$(NDK_VERSION)")
 #$(info NDK version $(NDK_VERSION)) # This warning puzzles ndk-gdb
 ifneq ($(filter r1 r2 r3 r4,$(NDK_VERSION)),)
 $(error Your NDK $(NDK_VERSION) is too old, please download NDK r4b, r5c or r6 from http://developer.android.com)
