@@ -7,8 +7,8 @@
 IFS='
 '
 
-NDK=`which ndk-build`
-NDK=`dirname $NDK`
+NDK_BUILD=`which ndk-build`
+NDK="$(readlink -f $(dirname $NDK_BUILD))"
 LOCAL_PATH=`dirname $0`
 LOCAL_PATH=`cd $LOCAL_PATH && pwd`
 

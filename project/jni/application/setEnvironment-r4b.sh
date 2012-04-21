@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "In setEnvironment-r4b.sh";
+
 IFS='
 '
 
@@ -16,6 +18,7 @@ fi
 
 NDK=`which ndk-build`
 NDK=`dirname $NDK`
+echo NDK=$(reallink -f $NDK)
 GCCVER=4.4.0
 PLATFORMVER=android-8
 LOCAL_PATH=`dirname $0`

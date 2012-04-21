@@ -9,8 +9,10 @@ IFS='
 
 NDK=`which ndk-build`
 NDK=`dirname $NDK`
-GCCVER=4.4.0
-PLATFORMVER=android-8
+# GCCVER=4.4.0
+GCCVER=4.4.3
+# PLATFORMVER=android-8
+PLATFORMVER=android-9
 LOCAL_PATH=`dirname $0`
 LOCAL_PATH=`cd $LOCAL_PATH && pwd`
 
@@ -42,6 +44,7 @@ CFLAGS="$CFLAGS_ANDROID $CFLAGS" \
 CXXFLAGS="$CFLAGS_ANDROID $CXXFLAGS" \
 CPPFLAGS="$CFLAGS_ANDROID $CPPFLAGS" \
 LDFLAGS="$LDFLAGS_ANDROID $LDFLAGS" \
+#  gcc -v 2>&1 | awk '/(GCC)/{print $(NF-1)}'
 CC="$NDK/build/prebuilt/linux-x86/arm-eabi-$GCCVER/bin/arm-eabi-gcc" \
 CXX="$NDK/build/prebuilt/linux-x86/arm-eabi-$GCCVER/bin/arm-eabi-g++" \
 RANLIB="$NDK/build/prebuilt/linux-x86/arm-eabi-$GCCVER/bin/arm-eabi-ranlib" \
