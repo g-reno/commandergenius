@@ -18,7 +18,7 @@ fi
 
 NDK=`which ndk-build`
 NDK=`dirname $NDK`
-echo NDK=$(reallink -f $NDK)
+echo NDK=$(readlink -f $NDK)
 GCCVER=4.4.0
 PLATFORMVER=android-8
 LOCAL_PATH=`dirname $0`
